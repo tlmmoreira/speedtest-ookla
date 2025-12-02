@@ -8,11 +8,13 @@ echo ""
 
 read -p "Digite seu e-mail para o Certbot: " email
 read -p "Digite o domínio (ex: seudominio.com.br): " dominio
+read -p "Digite o subdomínio (ex: velocidade.dominio.com.br): " subdominio
 
 echo ""
 echo "CONFIRMANDO:"
 echo "Email: $email"
-echo "Subdomínio: $dominio"
+echo "domínio: $dominio"
+echo "subdomínio: $subdominio"
 echo ""
 
 read -p "Os dados estão corretos? (s/n): " ok
@@ -189,8 +191,8 @@ OoklaServer.websocket.frameSizeLimitBytes = 5242880
 # openSSL.server.certificateFile = cert.pem
 # openSSL.server.privateKeyFile = key.pem
 
-openSSL.server.certificateFile = /etc/letsencrypt/live/velocidade.$dominio/fullchain.pem
-openSSL.server.privateKeyFile = /etc/letsencrypt/live/velocidade.$dominio/privkey.pem
+openSSL.server.certificateFile = /etc/letsencrypt/live/$subdominio/fullchain.pem
+openSSL.server.privateKeyFile = /etc/letsencrypt/live/$subdominio/privkey.pem
 
 # Restrict openssl server to TLSv1.2 and above
 # Options are 1.3, 1.2 (default), 1.1, and 1.0
@@ -267,7 +269,7 @@ systemctl enable ooklaserver
 
 apt install -y certbot
 
-certbot certonly --standalone -d $dominio -m $email --agree-tos --no-eff-email --non-interactive
+certbot certonly --standalone -d $subdominio -m $email --agree-tos --no-eff-email --non-interactive
 
 systemctl restart ooklaserver
 
@@ -287,5 +289,6 @@ systemctl restart cron
 echo ""
 echo "============================================"
 echo " INSTALAÇÃO CONCLUÍDA!"
-echo " Acesse: https://$dominio"
+echo " Acesse: https://$subdominio:8080"
 echo "============================================"
+
