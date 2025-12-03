@@ -7,14 +7,14 @@ echo "============================================"
 echo ""
 
 read -p "Digite seu e-mail para o Certbot: " email
-read -p "Digite o domínio (ex: seudominio.com.br): " dominio
-read -p "Digite o subdomínio (ex: velocidade.dominio.com.br): " subdominio
+read -p "Digite o dominio (ex: seudominio.com.br): " dominio
+read -p "Digite o subdominio (ex: velocidade.dominio.com.br): " subdominio
 
 echo ""
 echo "CONFIRMANDO:"
 echo "Email: $email"
-echo "domínio: $dominio"
-echo "subdomínio: $subdominio"
+echo "dominio: $dominio"
+echo "subdominio: $subdominio"
 echo ""
 
 read -p "Os dados estão corretos? (s/n): " ok
